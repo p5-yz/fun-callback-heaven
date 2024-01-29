@@ -4,7 +4,22 @@ function checkServerStatus(callBackFn) {
   request('/status', callBackFn);
 }
 
-function fetchBannerContent() {}
+// const callBackFn = (err, content) => {
+//   if (err) console.log(err);
+//   else content.data.copyrightYear = 2023;
+// };
+
+function fetchBannerContent(callBackFn) {
+  request('/banner', (error, content) => {
+    if (error) {
+      callBackFn(error);
+    } else {
+      const newContent = { ...content };
+      newContent.copyrightYear = 2023;
+      callBackFn(error, newContent);
+    }
+  });
+}
 
 function fetchAllOwners() {}
 
