@@ -1,6 +1,8 @@
 const request = require('../utils/server');
 
-function checkServerStatus() {}
+function checkServerStatus(callBackFn) {
+  request('/status', callBackFn);
+}
 
 function fetchBannerContent() {}
 
